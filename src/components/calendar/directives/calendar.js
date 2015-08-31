@@ -13,7 +13,7 @@ export default class CalendarDirective {
 			setPage: "&"
 		};
 
-		this.controller = new CalendarController();
+		this.controller = CalendarController;
 	}
 
 	link($scope, element, attrs) {
