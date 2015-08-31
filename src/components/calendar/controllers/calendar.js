@@ -6,8 +6,6 @@ export default class CalendarController {
 
 		this.viewMode = 1;
 	}
-
-
 }
 
 CalendarController.$inject = ["Calendar"];
