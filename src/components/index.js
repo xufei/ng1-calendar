@@ -1,13 +1,8 @@
-'use strict';
+"use strict";
 
-import angular from 'angular';
+import angular from "angular";
 
-import Calendar from './home.routes';
-import HomeController from './home.controller';
-import wordsService from '../../services/words.service';
-import authService from '../../services/auth.service';
+import calendar from "calendar/index";
 
-export default angular.module('app.home', [uirouter, wordsService, authService])
-	.config(routing)
-	.controller('HomeController', HomeController)
+export default angular.module("components", [calendar])
 	.name;

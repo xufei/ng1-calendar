@@ -1,9 +1,10 @@
-import template from "../templates/pager.html";
+import "../css/calendar.css";
+import template from "../templates/calendar.html";
 
-import Calendar from "../../models/calendar/calendar";
+import CalendarController from "../controllers/calendar";
 
 export default class CalendarDirective {
-	constructor($http) {
+	constructor(CalendarController) {
 		this.template = template;
 		this.restrict = "E";
 
@@ -12,7 +13,7 @@ export default class CalendarDirective {
 			setPage: "&"
 		};
 
-		this.controller = new Pager();
+		this.controller = new CalendarController();
 	}
 
 	link($scope, element, attrs) {
@@ -32,4 +33,4 @@ export default class CalendarDirective {
 	}
 }
 
-CalendarDirective.$inject = ["Calendar"];
+CalendarDirective.$inject = ["CalendarController"];

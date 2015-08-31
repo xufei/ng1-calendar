@@ -14,7 +14,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="row in calendar">
+            <tr ng-repeat="row in calendar.calendar">
                 <td ng-repeat="date in row track by $index" ng-class="dateClass(date)" ng-click="selectDate(date)" ng-dblclick="selectDate(date, true)">{{date}}</td>
             </tr>
             </tbody>
