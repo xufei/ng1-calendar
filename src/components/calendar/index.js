@@ -2,7 +2,7 @@
 
 import angular from "angular";
 
-import CalendarDirective from "directives/calendar";
+import CalendarDirective from "./directives/calendar";
 
 export default angular.module("components.calendar", [])
 	.directive('ngCalendar', CalendarDirective)

@@ -1,4 +1,4 @@
-import Calendar from "../../models/calendar/calendar";
+import Calendar from "../../../models/calendar/calendar";
 
 export default class CalendarController {
 	constructor(Calendar) {

@@ -1,5 +1,5 @@
 import angular from "angular";
 
-import components from "components/index.js";
+import components from "./components/index";
 
 angular.module("app", [components]);
