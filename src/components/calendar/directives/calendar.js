@@ -11,8 +11,6 @@ export default class CalendarDirective {
 			minDate: "=",
 			maxDate: "="
 		};
-
-		//this.controller = CalendarController;
 	}
 
 	link($scope, element, attrs) {
@@ -58,7 +56,7 @@ export default class CalendarDirective {
 		});
 
 		function dateOutOfRange(date) {
-			if (($scope.minDate && before(new Date($scope.currentYear, $scope.currentMonth, date),$scope.minDate))
+			if (($scope.minDate && before(new Date($scope.currentYear, $scope.currentMonth, date), $scope.minDate))
 				|| ($scope.maxDate && before($scope.maxDate, new Date($scope.currentYear, $scope.currentMonth, date)))) {
 				return true;
 			}
@@ -68,7 +66,7 @@ export default class CalendarDirective {
 		}
 
 		function before(date1, date2) {
-			return new Date(date1.getFullYear(), date1.getMonth(), date1.getDate()) <= new Date(date2.getFullYear(), date2.getMonth(), date2.getDate()-1);
+			return new Date(date1.getFullYear(), date1.getMonth(), date1.getDate()) <= new Date(date2.getFullYear(), date2.getMonth(), date2.getDate() - 1);
 		}
 
 		$scope.dateClass = function (date) {
@@ -130,7 +128,7 @@ export default class CalendarDirective {
 		};
 
 		$scope.currentMonthStr = function () {
-			return $scope.currentYear + "年 " + Calendar.months[$scope.currentMonth];
+			return $scope.currentYear + "年 " + Calendar._months[$scope.currentMonth];
 		};
 
 		$scope.currentAgeStr = function () {
