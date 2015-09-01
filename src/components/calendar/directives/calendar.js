@@ -4,6 +4,13 @@ import Calendar from "../../../models/calendar/calendar";
 
 export default class CalendarDirective {
 	constructor() {
+		// 视图模式，一个三个，可以切换，默认是显示日期的
+		this.ViewStates = Object.freeze({
+			DATE: 0,
+			MONTH: 1,
+			YEAR: 2
+		});
+
 		this.template = template;
 		this.restrict = "E";
 
@@ -13,43 +20,44 @@ export default class CalendarDirective {
 		};
 	}
 
-	link($scope, element, attrs) {
-		this.$scope = $scope;
+	link(scope, element, attrs) {
+		this.$scope = scope;
+
+		var now = new Date();
 
 		if (attrs["initYear"]) {
 			scope.currentYear = scope.$parent.$eval(attrs["initYear"]);
+		}
+		else {
+			scope.currentYear = now.getFullYear();
 		}
 
 		if (attrs["initMonth"]) {
 			scope.currentMonth = scope.$parent.$eval(attrs["initMonth"]);
 		}
+		else {
+			scope.currentMonth = now.getMonth();
+		}
 
 		if (attrs["initDate"]) {
 			scope.currentDate = scope.$parent.$eval(attrs["initDate"]);
 		}
+		else {
+			scope.currentDate = now.getDate();
+		}
 	}
 
 	controller($scope) {
-		let calendar = new Calendar();
-		$scope.calendar = calendar;
+		$scope.calendar = new Calendar();
 
-		$scope.viewMode = 0;
-
-		function init() {
-			var now = new Date();
-			$scope.currentYear = $scope.currentYear || now.getFullYear();
-			$scope.currentMonth = $scope.currentMonth || now.getMonth();
-			$scope.currentDate = $scope.currentDate || now.getDate();
-		}
-
-		init();
+		$scope.viewMode = this.ViewStates.DATE;
 
 		$scope.$watch("currentYear", function (newYear, oldYear) {
-			calendar.year = newYear;
+			$scope.calendar.year = newYear;
 		});
 
 		$scope.$watch("currentMonth", function (newMonth, oldMonth) {
-			calendar.month = newMonth;
+			$scope.calendar.month = newMonth;
 		});
 
 		$scope.$watch("currentDate", function (newDate, oldDate) {
@@ -69,18 +77,22 @@ export default class CalendarDirective {
 			return new Date(date1.getFullYear(), date1.getMonth(), date1.getDate()) <= new Date(date2.getFullYear(), date2.getMonth(), date2.getDate() - 1);
 		}
 
-		$scope.dateClass = function (date) {
-			if (!angular.isNumber(date)) {
+		$scope.dateClass = function (day) {
+			if (!day) {
 				return "empty";
 			}
-			else if (dateOutOfRange(date)) {
-				return "day disabled"
-			}
-			else if ($scope.currentDate == date) {
-				return "active today";
-			}
-			else if (date) {
-				return "day";
+			else {
+				var date = day.date;
+
+				if (dateOutOfRange(date)) {
+					return "day disabled"
+				}
+				else if ($scope.currentDate == date.getDate()) {
+					return "active today";
+				}
+				else if (date) {
+					return "day";
+				}
 			}
 		};
 
@@ -100,9 +112,11 @@ export default class CalendarDirective {
 			}
 		};
 
-		$scope.selectDate = function (date, dblClick) {
+		$scope.selectDate = function (day, dblClick) {
 			// 标记这个是不是双击引发的
 			$scope.dblClick = dblClick;
+
+			var date = day.date.getDate();
 
 			if (dateOutOfRange(date)) {
 				return;
@@ -128,21 +142,13 @@ export default class CalendarDirective {
 		};
 
 		$scope.currentMonthStr = function () {
-			return $scope.currentYear + "年 " + Calendar._months[$scope.currentMonth];
+			return $scope.calendar.year + "年 " + Calendar._months[$scope.calendar.month];
 		};
 
 		$scope.currentAgeStr = function () {
-			var startIndex = Math.floor($scope.currentYear / 10) * 10 + 1;
+			var startIndex = Math.floor($scope.calendar.year / 10) * 10 + 1;
 			return startIndex + " - " + (startIndex + 9);
 		};
-
-		function resetDate() {
-			var current = new Date($scope.currentYear, $scope.currentMonth, $scope.currentDate);
-
-			$scope.currentYear = current.getFullYear();
-			$scope.currentMonth = current.getMonth();
-			$scope.currentDate = current.getDate();
-		}
 
 		$scope.switchView = function (view) {
 			//0：日期；1：月；2：年
