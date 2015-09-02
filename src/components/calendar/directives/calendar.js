@@ -52,17 +52,6 @@ export default class CalendarDirective {
 
 		$scope.viewMode = this.ViewStates.DATE;
 
-		$scope.$watch("currentYear", function (newYear, oldYear) {
-			$scope.calendar.year = newYear;
-		});
-
-		$scope.$watch("currentMonth", function (newMonth, oldMonth) {
-			$scope.calendar.month = newMonth;
-		});
-
-		$scope.$watch("currentDate", function (newDate, oldDate) {
-		});
-
 		function dateOutOfRange(date) {
 			if (($scope.minDate && before(new Date($scope.currentYear, $scope.currentMonth, date), $scope.minDate))
 				|| ($scope.maxDate && before($scope.maxDate, new Date($scope.currentYear, $scope.currentMonth, date)))) {
@@ -84,31 +73,15 @@ export default class CalendarDirective {
 			else {
 				var date = day.date;
 
-				if (dateOutOfRange(date)) {
+				/*if (dateOutOfRange(date)) {
 					return "day disabled"
 				}
-				else if ($scope.currentDate == date.getDate()) {
+				else*/ if ($scope.currentDate == date.getDate()) {
 					return "active today";
 				}
 				else if (date) {
 					return "day";
 				}
-			}
-		};
-
-		$scope.monthClass = function (month) {
-			if ($scope.currentMonth == month) {
-				return "active month";
-			} else {
-				return "month";
-			}
-		};
-
-		$scope.yearClass = function (year) {
-			if ($scope.currentYear == year) {
-				return "active year";
-			} else {
-				return "year";
 			}
 		};
 
@@ -132,27 +105,13 @@ export default class CalendarDirective {
 		};
 
 		$scope.selectMonth = function (month) {
-			$scope.currentMonth = month;
-			$scope.switchView(0);
-		};
+			$scope.calendar.month = month;
+			$scope.viewMode = this.ViewStates.DATE;
+		}.bind(this);
 
 		$scope.selectYear = function (year) {
-			$scope.currentYear = year;
-			$scope.switchView(1);
-		};
-
-		$scope.currentMonthStr = function () {
-			return $scope.calendar.year + "年 " + Calendar._months[$scope.calendar.month];
-		};
-
-		$scope.currentAgeStr = function () {
-			var startIndex = Math.floor($scope.calendar.year / 10) * 10 + 1;
-			return startIndex + " - " + (startIndex + 9);
-		};
-
-		$scope.switchView = function (view) {
-			//0：日期；1：月；2：年
-			$scope.viewMode = view;
-		};
+			$scope.calendar.year = year;
+			$scope.viewMode = this.ViewStates.MONTH;
+		}.bind(this);
 	}
 }

@@ -5,7 +5,9 @@
             <tr>
                 <th class="prev" ng-click="calendar.previousYear()">‹‹</th>
                 <th class="prev" ng-click="calendar.previousMonth()">‹</th>
-                <th colspan="3" class="switch" ng-click="switchView(1)">{{currentMonthStr()}}</th>
+                <th colspan="3" class="switch" ng-click="viewMode=1">
+                    {{calendar.year + "年 " + calendar.months[calendar.month]}}
+                </th>
                 <th class="next" ng-click="calendar.nextMonth()">›</th>
                 <th class="next" ng-click="calendar.nextYear()">››</th>
             </tr>
@@ -15,7 +17,10 @@
             </thead>
             <tbody>
             <tr ng-repeat="row in calendar.days">
-                <td ng-repeat="day in row track by $index" ng-class="dateClass(day)" ng-click="selectDate(day)" ng-dblclick="selectDate(day, true)">{{day.date.getDate()}}</td>
+                <td ng-repeat="day in row track by $index"
+                    ng-class="dateClass(day)"
+                    ng-click="selectDate(day)"
+                    ng-dblclick="selectDate(day, true)">{{day.date.getDate()}}</td>
             </tr>
             </tbody>
         </table>
@@ -25,14 +30,17 @@
             <thead>
             <tr>
                 <th class="prev" ng-click="calendar.previousYear()">‹</th>
-                <th colspan="5" class="switch" ng-click="switchView(2)">{{currentYear}}</th>
+                <th colspan="5" class="switch" ng-click="viewMode=2">{{calendar.year}}</th>
                 <th class="next" ng-click="calendar.nextYear()">›</th>
             </tr>
             </thead>
             <tbody>
             <tr>
                 <td colspan="7">
-                    <span ng-repeat="month in calendar.months" ng-class="monthClass($index)" ng-click="selectMonth($index)">{{month}}</span>
+                    <span class="month"
+                          ng-repeat="month in calendar.months"
+                          ng-class="{'active':month==calendar.months[calendar.month]}"
+                          ng-click="selectMonth($index)">{{month}}</span>
                 </td>
             </tr>
             </tbody>
@@ -44,14 +52,19 @@
             <thead>
             <tr>
                 <th class="prev" ng-click="calendar.previousAge()">‹</th>
-                <th colspan="5" class="switch">{{currentAgeStr()}}</th>
+                <th colspan="5" class="switch">
+                    {{calendar.years[0] + " - " + calendar.years[9]}}
+                </th>
                 <th class="next" ng-click="calendar.nextAge()">›</th>
             </tr>
             </thead>
             <tbody>
             <tr>
                 <td colspan="7">
-                    <span ng-repeat="year in calendar.years" ng-class="yearClass(year)" ng-click="selectYear(year)">{{year}}</span>
+                    <span class="year"
+                          ng-repeat="year in calendar.years"
+                          ng-class="{'active':year==calendar.year}"
+                          ng-click="selectYear(year)">{{year}}</span>
                 </td>
             </tr>
             </tbody>
