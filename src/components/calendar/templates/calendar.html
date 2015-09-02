@@ -5,7 +5,9 @@
             <tr>
                 <th class="prev" ng-click="calendar.previousYear()">‹‹</th>
                 <th class="prev" ng-click="calendar.previousMonth()">‹</th>
-                <th colspan="3" class="switch" ng-click="viewMode=1">
+                <th colspan="3"
+                    class="switch"
+                    ng-click="viewMode=1">
                     {{calendar.year + "年 " + calendar.months[calendar.month]}}
                 </th>
                 <th class="next" ng-click="calendar.nextMonth()">›</th>
@@ -19,8 +21,7 @@
             <tr ng-repeat="row in calendar.days">
                 <td ng-repeat="day in row track by $index"
                     ng-class="dateClass(day)"
-                    ng-click="selectDate(day)"
-                    ng-dblclick="selectDate(day, true)">{{day.date.getDate()}}</td>
+                    ng-click="selectDate(day)">{{day.date.getDate()}}</td>
             </tr>
             </tbody>
         </table>
@@ -30,7 +31,9 @@
             <thead>
             <tr>
                 <th class="prev" ng-click="calendar.previousYear()">‹</th>
-                <th colspan="5" class="switch" ng-click="viewMode=2">{{calendar.year}}</th>
+                <th colspan="5"
+                    class="switch"
+                    ng-click="viewMode=2">{{calendar.year}}</th>
                 <th class="next" ng-click="calendar.nextYear()">›</th>
             </tr>
             </thead>

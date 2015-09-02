@@ -26,35 +26,29 @@ export default class CalendarDirective {
 		var now = new Date();
 
 		if (attrs["initYear"]) {
-			scope.currentYear = scope.$parent.$eval(attrs["initYear"]);
-		}
-		else {
-			scope.currentYear = now.getFullYear();
+			scope.initYear = scope.$parent.$eval(attrs["initYear"]);
 		}
 
 		if (attrs["initMonth"]) {
-			scope.currentMonth = scope.$parent.$eval(attrs["initMonth"]);
-		}
-		else {
-			scope.currentMonth = now.getMonth();
+			scope.initMonth = scope.$parent.$eval(attrs["initMonth"]);
 		}
 
 		if (attrs["initDate"]) {
-			scope.currentDate = scope.$parent.$eval(attrs["initDate"]);
-		}
-		else {
-			scope.currentDate = now.getDate();
+			scope.initMonth = scope.$parent.$eval(attrs["initDate"]);
 		}
 	}
 
 	controller($scope) {
-		$scope.calendar = new Calendar();
+		let now = new Date();
+
+		let calendar = new Calendar();
+		$scope.calendar = calendar;
 
 		$scope.viewMode = this.ViewStates.DATE;
 
 		function dateOutOfRange(date) {
-			if (($scope.minDate && before(new Date($scope.currentYear, $scope.currentMonth, date), $scope.minDate))
-				|| ($scope.maxDate && before($scope.maxDate, new Date($scope.currentYear, $scope.currentMonth, date)))) {
+			if (($scope.minDate && before(new Date(calendar.year, calendar.month, date), $scope.minDate))
+				|| ($scope.maxDate && before($scope.maxDate, new Date(calendar.year, calendar.month, date)))) {
 				return true;
 			}
 			else {
@@ -73,10 +67,10 @@ export default class CalendarDirective {
 			else {
 				var date = day.date;
 
-				/*if (dateOutOfRange(date)) {
+				if (dateOutOfRange(date)) {
 					return "day disabled"
 				}
-				else*/ if ($scope.currentDate == date.getDate()) {
+				else if (calendar.date.valueOf() == day.valueOf()) {
 					return "active today";
 				}
 				else if (date) {
@@ -85,10 +79,7 @@ export default class CalendarDirective {
 			}
 		};
 
-		$scope.selectDate = function (day, dblClick) {
-			// 标记这个是不是双击引发的
-			$scope.dblClick = dblClick;
-
+		$scope.selectDate = function (day) {
 			var date = day.date.getDate();
 
 			if (dateOutOfRange(date)) {
@@ -96,21 +87,17 @@ export default class CalendarDirective {
 			}
 
 			if (date) {
-				if (date == $scope.currentDate) {
-					$scope.$emit("sn.controls.calendar:dateChanged", date);
-				} else {
-					$scope.currentDate = date;
-				}
+				calendar.date = day;
 			}
 		};
 
 		$scope.selectMonth = function (month) {
-			$scope.calendar.month = month;
+			calendar.month = month;
 			$scope.viewMode = this.ViewStates.DATE;
 		}.bind(this);
 
 		$scope.selectYear = function (year) {
-			$scope.calendar.year = year;
+			calendar.year = year;
 			$scope.viewMode = this.ViewStates.MONTH;
 		}.bind(this);
 	}
