@@ -1,76 +1,80 @@
 <div class="calendar">
-    <div class="datepicker-days" ng-show="viewMode==0">
-        <table class="table-condensed">
-            <thead>
-            <tr>
-                <th class="prev" ng-click="calendar.previousYear()">‹‹</th>
-                <th class="prev" ng-click="calendar.previousMonth()">‹</th>
-                <th colspan="3"
-                    class="switch"
-                    ng-click="viewMode=1">
-                    {{calendar.year + "年 " + calendar.months[calendar.month]}}
-                </th>
-                <th class="next" ng-click="calendar.nextMonth()">›</th>
-                <th class="next" ng-click="calendar.nextYear()">››</th>
-            </tr>
-            <tr>
-                <th class="dow" ng-repeat="day in calendar.weekdays">{{day}}</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr ng-repeat="row in calendar.days">
-                <td ng-repeat="day in row track by $index"
-                    ng-class="dateClass(day)"
-                    ng-click="selectDate(day)">{{day.date.getDate()}}</td>
-            </tr>
-            </tbody>
-        </table>
+    <div class="date-view" ng-show="viewMode==0">
+        <div class="calendar-row calendar-header">
+            <div class="prev" ng-click="calendar.previousYear()">
+                <span>‹‹</span>
+            </div>
+            <div class="prev" ng-click="calendar.previousMonth()">
+                <span>‹</span>
+            </div>
+            <div class="date-title" ng-click="viewMode=1">
+                <span>{{calendar.year + "年 " + calendar.months[calendar.month]}}</span>
+            </div>
+            <div class="next" ng-click="calendar.nextMonth()">
+                <span>›</span>
+            </div>
+            <div class="next" ng-click="calendar.nextYear()">
+                <span>››</span>
+            </div>
+        </div>
+
+        <div class="calendar-row">
+            <div class="day" ng-repeat="day in calendar.weekdays">
+                <span>{{day}}</span>
+            </div>
+        </div>
+
+        <div class="calendar-row" ng-repeat="row in calendar.days">
+            <div class="date" ng-repeat="day in row track by $index"
+                 ng-class="dateClass(day)"
+                 ng-click="selectDate(day)">
+                <a href="javascript:void(0)">{{day.date.getDate()}}</a>
+            </div>
+        </div>
     </div>
-    <div class="datepicker-months" ng-show="viewMode==1">
-        <table class="table-condensed">
-            <thead>
-            <tr>
-                <th class="prev" ng-click="calendar.previousYear()">‹</th>
-                <th colspan="5"
-                    class="switch"
-                    ng-click="viewMode=2">{{calendar.year}}</th>
-                <th class="next" ng-click="calendar.nextYear()">›</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td colspan="7">
-                    <span class="month"
-                          ng-repeat="month in calendar.months"
-                          ng-class="{'active':month==calendar.months[calendar.month]}"
-                          ng-click="selectMonth($index)">{{month}}</span>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+    <div class="month-view" ng-show="viewMode==1">
+        <div class="calendar-row calendar-header">
+            <div class="prev" ng-click="calendar.previousYear()">
+                <span>‹</span>
+            </div>
+            <div class="month-title" ng-click="viewMode=2">
+                <span>{{calendar.year}}</span>
+            </div>
+            <div class="next" ng-click="calendar.nextYear()">
+                <span>›</span>
+            </div>
+        </div>
+
+        <div class="calendar-row">
+            <div class="month"
+                  ng-repeat="month in calendar.months"
+                  ng-class="{'active':month==calendar.months[calendar.month]}"
+                  ng-click="selectMonth($index)">
+                <a href="javascript:void(0)">{{month}}</a>
+            </div>
+        </div>
     </div>
 
-    <div class="datepicker-years" ng-show="viewMode==2">
-        <table class="table-condensed">
-            <thead>
-            <tr>
-                <th class="prev" ng-click="calendar.previousAge()">‹</th>
-                <th colspan="5" class="switch">
-                    {{calendar.years[0] + " - " + calendar.years[9]}}
-                </th>
-                <th class="next" ng-click="calendar.nextAge()">›</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td colspan="7">
-                    <span class="year"
-                          ng-repeat="year in calendar.years"
-                          ng-class="{'active':year==calendar.year}"
-                          ng-click="selectYear(year)">{{year}}</span>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+    <div class="year-view" ng-show="viewMode==2">
+        <div class="calendar-row calendar-header">
+            <div class="prev" ng-click="calendar.previousAge()">
+                <span>‹</span>
+            </div>
+            <div class="year-title" ng-click="viewMode=2">
+                <span>{{calendar.years[0] + " - " + calendar.years[9]}}</span>
+            </div>
+            <div class="next" ng-click="calendar.nextAge()">
+                <span>›</span>
+            </div>
+        </div>
+
+        <div class="calendar-row">
+            <div class="year"
+                 ng-repeat="year in calendar.years"
+                 ng-class="{'active':year==calendar.year}"
+                 ng-click="selectYear(year)">
+                <a href="javascript:void(0)">{{year}}</a>
+            </div>
+        </div>
     </div>
 </div>

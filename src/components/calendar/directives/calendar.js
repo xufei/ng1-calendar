@@ -68,13 +68,10 @@ export default class CalendarDirective {
 				var date = day.date;
 
 				if (dateOutOfRange(date)) {
-					return "day disabled"
+					return "disabled"
 				}
 				else if (calendar.date.valueOf() == day.valueOf()) {
-					return "active today";
-				}
-				else if (date) {
-					return "day";
+					return "active";
 				}
 			}
 		};
@@ -86,9 +83,7 @@ export default class CalendarDirective {
 				return;
 			}
 
-			if (date) {
-				calendar.date = day;
-			}
+			calendar.date = day;
 		};
 
 		$scope.selectMonth = function (month) {
