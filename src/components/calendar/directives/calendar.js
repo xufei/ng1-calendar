@@ -68,7 +68,7 @@ export default class CalendarDirective {
 				var date = day.date;
 
 				if (dateOutOfRange(date)) {
-					return "disabled"
+					return "disabled";
 				}
 				else if (calendar.date.valueOf() == day.valueOf()) {
 					return "active";

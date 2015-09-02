@@ -6,6 +6,21 @@
     background-color: #ffffff;
 }
 
+.calendar a,
+.calendar span {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    padding: .3125rem 0;
+    color: #2086bf;
+}
+
+.calendar a:hover {
+    background-color: #75c7ee;
+    color: #ffffff;
+    border-radius: inherit;
+}
+
 .calendar .calendar-row {
     margin: 0 0 .1rem;
     width: 100%;
@@ -22,26 +37,6 @@
     margin-bottom: 0;
 }
 
-.calendar .calendar-row.calendar-header {
-    background-color: #59cde2;
-    color: #ffffff;
-}
-
-.calendar a,
-.calendar span {
-    display: block;
-    text-align: center;
-    text-decoration: none;
-    padding: .3125rem 0;
-    color: #2086bf;
-}
-
-.calendar a:hover {
-    background-color: #75c7ee;
-    color: #ffffff;
-    border-radius: inherit;
-}
-
 .calendar .calendar-row>div {
     float: left;
     cursor: pointer;
@@ -55,6 +50,11 @@
 .calendar .calendar-header span {
     color: #ffffff;
     padding: 1rem 0;
+}
+
+.calendar .calendar-row.calendar-header {
+    background-color: #59cde2;
+    color: #ffffff;
 }
 
 .calendar .prev,
@@ -85,19 +85,23 @@
     color: #ffffff;
 }
 
-.calendar .date.empty {
+.calendar div.date.empty {
     border: 1px transparent solid;
     cursor: default;
 }
 
-.calendar .date.empty a:hover {
+.calendar div.empty a:hover {
     background-color: transparent;
+}
+
+.calendar div.date.disabled {
+    color: #999999;
+    background-color: #eeeeee;
 }
 
 .calendar .day {
     font-weight: bold;
 }
-
 
 .calendar .year,
 .calendar .month {
