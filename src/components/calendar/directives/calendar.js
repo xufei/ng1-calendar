@@ -39,45 +39,12 @@ export default class CalendarDirective {
 	}
 
 	controller($scope) {
-		let now = new Date();
-
 		let calendar = new Calendar();
 		$scope.calendar = calendar;
 
 		$scope.viewMode = this.ViewStates.DATE;
 
-		function dateOutOfRange(date) {
-			if (($scope.minDate && before(new Date(calendar.year, calendar.month, date), $scope.minDate))
-				|| ($scope.maxDate && before($scope.maxDate, new Date(calendar.year, calendar.month, date)))) {
-				return true;
-			}
-			else {
-				return false;
-			}
-		}
-
-		function before(date1, date2) {
-			return new Date(date1.getFullYear(), date1.getMonth(), date1.getDate()) <= new Date(date2.getFullYear(), date2.getMonth(), date2.getDate() - 1);
-		}
-
-		$scope.dateClass = function (day) {
-			var date = day.date;
-
-			if (dateOutOfRange(date)) {
-				return "disabled";
-			}
-			else if (calendar.date.valueOf() == day.valueOf()) {
-				return "active";
-			}
-		};
-
 		$scope.selectDate = function (day) {
-			var date = day.date.getDate();
-
-			if (dateOutOfRange(date)) {
-				return;
-			}
-
 			calendar.date = day;
 		};
 
