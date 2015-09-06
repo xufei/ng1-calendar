@@ -35,17 +35,17 @@
     clear: both;
 }
 
-.schedule .schedule-row:last-child {
-    margin-right: 0;
-}
-
 .schedule .schedule-row>div {
     float: left;
     cursor: pointer;
-    border: 1px #bcd9e2 solid;
 }
 
-.schedule .schedule-header>div {
+.schedule .schedule-row>div>a {
+    border: 1px #bcd9e2 solid;
+    margin: 0.1em;
+}
+
+.schedule .schedule-header>div>a {
     border: 1px transparent solid;
 }
 
@@ -63,22 +63,23 @@
 .schedule .next,
 .schedule .date,
 .schedule .day {
-    margin-right: 0.2%;
-    width: 13.4%;
+    width: 14.285714285714285%;
 }
 
 .schedule .month-title,
 .schedule .year-title {
-    margin: .1rem 0.2%;
-    width: 69%;
+    width: 71.42857142857143%;
 }
 
 .schedule .date-title {
-    margin: .1rem 0.2%;
-    width: 41%;
+    width: 42.857142857142855%;
 }
 
-.schedule .active {
+.schedule a {
+    padding: 4rem 0;
+}
+
+.schedule .active a {
     background-color: #60a917;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
 }
@@ -87,7 +88,7 @@
     color: #ffffff;
 }
 
-.schedule div.date.empty {
+.schedule div.date.empty a {
     border: 1px transparent solid;
     cursor: default;
 }
@@ -101,15 +102,14 @@
     background-color: #eeeeee;
 }
 
-.schedule .schedule-row .day {
+.schedule .schedule-row .day a {
     font-weight: 800;
     border: 1px transparent solid;
 }
 
 .schedule .year,
 .schedule .month {
-    margin: .3125rem 1%;
-    width: 22%;
+    width: 25%;
 }
 
 .schedule .year a,

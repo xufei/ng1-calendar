@@ -35,17 +35,17 @@
     clear: both;
 }
 
-.calendar .calendar-row:last-child {
-    margin-right: 0;
-}
-
 .calendar .calendar-row>div {
     float: left;
     cursor: pointer;
-    border: 1px #bcd9e2 solid;
 }
 
-.calendar .calendar-header>div {
+.calendar .calendar-row>div>a {
+    border: 1px #bcd9e2 solid;
+    margin: 0.1em;
+}
+
+.calendar .calendar-header>div>a {
     border: 1px transparent solid;
 }
 
@@ -63,22 +63,19 @@
 .calendar .next,
 .calendar .date,
 .calendar .day {
-    margin-right: 0.2%;
-    width: 13.4%;
+    width: 14.285714285714285%;
 }
 
 .calendar .month-title,
 .calendar .year-title {
-    margin: .1rem 0.2%;
-    width: 69%;
+    width: 71.42857142857143%;
 }
 
 .calendar .date-title {
-    margin: .1rem 0.2%;
-    width: 41%;
+    width: 42.857142857142855%;
 }
 
-.calendar .active {
+.calendar .active a {
     background-color: #60a917;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
 }
@@ -87,7 +84,7 @@
     color: #ffffff;
 }
 
-.calendar div.date.empty {
+.calendar div.date.empty a {
     border: 1px transparent solid;
     cursor: default;
 }
@@ -101,15 +98,14 @@
     background-color: #eeeeee;
 }
 
-.calendar .calendar-row .day {
+.calendar .calendar-row .day a {
     font-weight: 800;
     border: 1px transparent solid;
 }
 
 .calendar .year,
 .calendar .month {
-    margin: .3125rem 1%;
-    width: 22%;
+    width: 25%;
 }
 
 .calendar .year a,
