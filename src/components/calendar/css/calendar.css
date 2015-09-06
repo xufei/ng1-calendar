@@ -81,7 +81,12 @@
     color: #ffffff;
 }
 
-.calendar div.date.disabled {
+.calendar div.date.disabled a {
+    color: #999999;
+    background-color: #eeeeee;
+}
+
+.calendar div.date.disabled a:hover {
     color: #999999;
     background-color: #eeeeee;
 }

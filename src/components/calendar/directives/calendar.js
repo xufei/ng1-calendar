@@ -37,8 +37,28 @@ export default class CalendarDirective {
 
 		$scope.viewMode = this.ViewStates.DATE;
 
+		$scope.dateInRange = function(day) {
+			if (!day) {
+				return true;
+			}
+
+			if ($scope.minDate) {
+				if (day.date - $scope.minDate < 0) {
+					return false;
+				}
+			}
+			if ($scope.maxDate) {
+				if (day.date - $scope.maxDate > 0) {
+					return false;
+				}
+			}
+			return true;
+		};
+
 		$scope.selectDate = function (day) {
-			calendar.selectedDate = day;
+			if ($scope.dateInRange(day)) {
+				calendar.selectedDate = day;
+			}
 		};
 
 		$scope.selectMonth = function (month) {
