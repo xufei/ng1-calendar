@@ -1,4 +1,4 @@
-.calendar {
+.schedule {
     min-width: 13.75rem;
     border: 1px #eeeeee solid;
     font-size: 0.75rem;
@@ -7,8 +7,8 @@
     font-family: "Tahoma";
 }
 
-.calendar a,
-.calendar span {
+.schedule a,
+.schedule span {
     display: block;
     text-align: center;
     text-decoration: none;
@@ -16,103 +16,103 @@
     color: #2086bf;
 }
 
-.calendar a:hover {
+.schedule a:hover {
     background-color: #75c7ee;
     color: #ffffff;
     border-radius: inherit;
 }
 
-.calendar .calendar-row {
+.schedule .schedule-row {
     margin: 0 0 .1rem;
     width: 100%;
 }
-.calendar .calendar-row:before,
-.calendar .calendar-row:after {
+.schedule .schedule-row:before,
+.schedule .schedule-row:after {
     display: table;
     content: "";
 }
-.calendar .calendar-row:after {
+.schedule .schedule-row:after {
     clear: both;
 }
 
-.calendar .calendar-row:last-child {
+.schedule .schedule-row:last-child {
     margin-right: 0;
 }
 
-.calendar .calendar-row>div {
+.schedule .schedule-row>div {
     float: left;
     cursor: pointer;
     border: 1px #bcd9e2 solid;
 }
 
-.calendar .calendar-header>div {
+.schedule .schedule-header>div {
     border: 1px transparent solid;
 }
 
-.calendar .calendar-header span {
+.schedule .schedule-header span {
     color: #ffffff;
     padding: 1rem 0;
 }
 
-.calendar .calendar-row.calendar-header {
+.schedule .schedule-row.schedule-header {
     background-color: #59cde2;
     color: #ffffff;
 }
 
-.calendar .prev,
-.calendar .next,
-.calendar .date,
-.calendar .day {
+.schedule .prev,
+.schedule .next,
+.schedule .date,
+.schedule .day {
     margin-right: 0.2%;
     width: 13.4%;
 }
 
-.calendar .month-title,
-.calendar .year-title {
+.schedule .month-title,
+.schedule .year-title {
     margin: .1rem 0.2%;
     width: 69%;
 }
 
-.calendar .date-title {
+.schedule .date-title {
     margin: .1rem 0.2%;
     width: 41%;
 }
 
-.calendar .active {
+.schedule .active {
     background-color: #60a917;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
 }
 
-.calendar .active a {
+.schedule .active a {
     color: #ffffff;
 }
 
-.calendar div.date.empty {
+.schedule div.date.empty {
     border: 1px transparent solid;
     cursor: default;
 }
 
-.calendar div.empty a:hover {
+.schedule div.empty a:hover {
     background-color: transparent;
 }
 
-.calendar div.date.disabled {
+.schedule div.date.disabled {
     color: #999999;
     background-color: #eeeeee;
 }
 
-.calendar .calendar-row .day {
+.schedule .schedule-row .day {
     font-weight: 800;
     border: 1px transparent solid;
 }
 
-.calendar .year,
-.calendar .month {
+.schedule .year,
+.schedule .month {
     margin: .3125rem 1%;
     width: 22%;
 }
 
-.calendar .year a,
-.calendar .month a {
+.schedule .year a,
+.schedule .month a {
     padding: 1.3125rem 0;
 }

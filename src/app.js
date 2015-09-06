@@ -2,4 +2,6 @@ import angular from "angular";
 
 import components from "./components/index";
 
-angular.module("app", [components]);
+import schedule from "./modules/schedule/index";
+
+angular.module("app", [components, schedule]);
