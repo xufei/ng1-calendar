@@ -28,7 +28,8 @@
             <div class="date" ng-repeat="day in row track by $index"
                  ng-class="dateClass(day)"
                  ng-click="selectDate(day)">
-                <a href="javascript:void(0)" ng-dblclick="selectDate(day)">{{day.date.getDate()}}</a>
+                <a href="javascript:void(0)" ng-if="day">{{day.date.getDate()}}</a>
+                <span ng-if="!day"></span>
             </div>
         </div>
     </div>

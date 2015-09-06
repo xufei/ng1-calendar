@@ -61,18 +61,13 @@ export default class CalendarDirective {
 		}
 
 		$scope.dateClass = function (day) {
-			if (!day) {
-				return "empty";
-			}
-			else {
-				var date = day.date;
+			var date = day.date;
 
-				if (dateOutOfRange(date)) {
-					return "disabled";
-				}
-				else if (calendar.date.valueOf() == day.valueOf()) {
-					return "active";
-				}
+			if (dateOutOfRange(date)) {
+				return "disabled";
+			}
+			else if (calendar.date.valueOf() == day.valueOf()) {
+				return "active";
 			}
 		};
 

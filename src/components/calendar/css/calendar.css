@@ -37,7 +37,6 @@
 
 .calendar .calendar-row>div {
     float: left;
-    cursor: pointer;
 }
 
 .calendar .calendar-row>div>a {
@@ -82,15 +81,6 @@
 
 .calendar .active a {
     color: #ffffff;
-}
-
-.calendar div.date.empty a {
-    border: 1px transparent solid;
-    cursor: default;
-}
-
-.calendar div.empty a:hover {
-    background-color: transparent;
 }
 
 .calendar div.date.disabled {

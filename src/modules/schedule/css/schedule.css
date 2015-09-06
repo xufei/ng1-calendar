@@ -37,12 +37,12 @@
 
 .schedule .schedule-row>div {
     float: left;
-    cursor: pointer;
 }
 
 .schedule .schedule-row>div>a {
     border: 1px #bcd9e2 solid;
     margin: 0.1em;
+    padding: 3rem 0;
 }
 
 .schedule .schedule-header>div>a {
@@ -75,10 +75,6 @@
     width: 42.857142857142855%;
 }
 
-.schedule a {
-    padding: 4rem 0;
-}
-
 .schedule .active a {
     background-color: #60a917;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
@@ -86,15 +82,6 @@
 
 .schedule .active a {
     color: #ffffff;
-}
-
-.schedule div.date.empty a {
-    border: 1px transparent solid;
-    cursor: default;
-}
-
-.schedule div.empty a:hover {
-    background-color: transparent;
 }
 
 .schedule div.date.disabled {
