@@ -2,19 +2,19 @@
     <div class="date-view" ng-show="viewMode==0">
         <div class="schedule-row schedule-header">
             <div class="prev" ng-click="calendar.previousYear()">
-                <span>‹‹</span>
+                <a href="javascript:void(0)">‹‹</a>
             </div>
             <div class="prev" ng-click="calendar.previousMonth()">
-                <span>‹</span>
+                <a href="javascript:void(0)">‹</a>
             </div>
             <div class="date-title" ng-click="viewMode=1">
-                <span>{{calendar.year + "年 " + calendar.months[calendar.month]}}</span>
+                <a href="javascript:void(0)">{{calendar.year + "年 " + calendar.months[calendar.month]}}</a>
             </div>
             <div class="next" ng-click="calendar.nextMonth()">
-                <span>›</span>
+                <a href="javascript:void(0)">›</a>
             </div>
             <div class="next" ng-click="calendar.nextYear()">
-                <span>››</span>
+                <a href="javascript:void(0)">››</a>
             </div>
         </div>
 
@@ -36,13 +36,13 @@
     <div class="month-view" ng-show="viewMode==1">
         <div class="schedule-row schedule-header">
             <div class="prev" ng-click="calendar.previousYear()">
-                <span>‹</span>
+                <a href="javascript:void(0)">‹</a>
             </div>
             <div class="month-title" ng-click="viewMode=2">
-                <span>{{calendar.year}}</span>
+                <a href="javascript:void(0)">{{calendar.year}}</a>
             </div>
             <div class="next" ng-click="calendar.nextYear()">
-                <span>›</span>
+                <a href="javascript:void(0)">›</a>
             </div>
         </div>
 
@@ -59,13 +59,13 @@
     <div class="year-view" ng-show="viewMode==2">
         <div class="schedule-row schedule-header">
             <div class="prev" ng-click="calendar.previousAge()">
-                <span>‹</span>
+                <a href="javascript:void(0)">‹</a>
             </div>
-            <div class="year-title" ng-click="viewMode=2">
+            <div class="year-title">
                 <span>{{calendar.years[0] + " - " + calendar.years[9]}}</span>
             </div>
             <div class="next" ng-click="calendar.nextAge()">
-                <span>›</span>
+                <a href="javascript:void(0)">›</a>
             </div>
         </div>
 

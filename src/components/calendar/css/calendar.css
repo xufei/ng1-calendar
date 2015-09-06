@@ -19,7 +19,6 @@
 .calendar a:hover {
     background-color: #75c7ee;
     color: #ffffff;
-    border-radius: inherit;
 }
 
 .calendar .calendar-row {
@@ -39,21 +38,20 @@
     float: left;
 }
 
-.calendar .calendar-row>div>a {
+.calendar .calendar-row a {
     border: 1px #bcd9e2 solid;
     margin: 0.1em;
 }
 
-.calendar .calendar-header>div>a {
+.calendar .calendar-header a,
+.calendar .calendar-header span {
+    color: #ffffff;
+    background-color: #59cde2;
+    padding: 1rem 0;
     border: 1px transparent solid;
 }
 
-.calendar .calendar-header span {
-    color: #ffffff;
-    padding: 1rem 0;
-}
-
-.calendar .calendar-row.calendar-header {
+.calendar .calendar-header {
     background-color: #59cde2;
     color: #ffffff;
 }
