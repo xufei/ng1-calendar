@@ -16,36 +16,29 @@ export default class CalendarDirective {
 
 		this.scope = {
 			minDate: "=",
-			maxDate: "="
+			maxDate: "=",
+			defaultDate: "="
 		};
 	}
 
 	link(scope, element, attrs) {
 		this.$scope = scope;
-
-		var now = new Date();
-
-		if (attrs["initYear"]) {
-			scope.initYear = scope.$parent.$eval(attrs["initYear"]);
-		}
-
-		if (attrs["initMonth"]) {
-			scope.initMonth = scope.$parent.$eval(attrs["initMonth"]);
-		}
-
-		if (attrs["initDate"]) {
-			scope.initMonth = scope.$parent.$eval(attrs["initDate"]);
-		}
 	}
 
 	controller($scope) {
 		let calendar = new Calendar();
 		$scope.calendar = calendar;
 
+		if ($scope.defaultDate) {
+			calendar.year = $scope.defaultDate.getFullYear();
+			calendar.month = $scope.defaultDate.getMonth();
+			calendar.date = $scope.defaultDate.getDate();
+		}
+
 		$scope.viewMode = this.ViewStates.DATE;
 
 		$scope.selectDate = function (day) {
-			calendar.date = day;
+			calendar.selectedDate = day;
 		};
 
 		$scope.selectMonth = function (month) {
