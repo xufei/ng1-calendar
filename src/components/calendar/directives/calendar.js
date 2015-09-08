@@ -17,7 +17,7 @@ export default class CalendarDirective {
 		this.scope = {
 			minDate: "=",
 			maxDate: "=",
-			defaultDate: "="
+			selectedDate: "="
 		};
 	}
 
@@ -29,10 +29,10 @@ export default class CalendarDirective {
 		let calendar = new Calendar();
 		$scope.calendar = calendar;
 
-		if ($scope.defaultDate) {
-			calendar.year = $scope.defaultDate.getFullYear();
-			calendar.month = $scope.defaultDate.getMonth();
-			calendar.date = $scope.defaultDate.getDate();
+		if ($scope.selectedDate) {
+			calendar.year = $scope.selectedDate.getFullYear();
+			calendar.month = $scope.selectedDate.getMonth();
+			calendar.date = $scope.selectedDate.getDate();
 		}
 
 		$scope.viewMode = this.ViewStates.DATE;

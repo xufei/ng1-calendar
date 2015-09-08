@@ -1,0 +1,11 @@
+<div class="date-picker" ng-class="{'open':pop}">
+    <div class="input-group">
+        <input type="text" class="form-control" ng-attr-placeholder="{{placeholder}}" ng-model="currentDate" readonly/>
+	    <span class="input-group-addon" ng-click="pop=true">
+	        <span class="glyphicon glyphicon-calendar">aaa</span>
+	    </span>
+    </div>
+    <div class="pop">
+        <ng-calendar selected-date="selectedDate"></ng-calendar>
+    </div>
+</div>

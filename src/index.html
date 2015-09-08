@@ -32,7 +32,7 @@
         </div>
         <div class="small-calendar-container">
             <h2>设置默认日期</h2>
-            <ng-calendar default-date="now"></ng-calendar>
+            <ng-calendar selected-date="now"></ng-calendar>
         </div>
         <div class="small-calendar-container">
             <h2>设置最小日期</h2>
@@ -43,6 +43,8 @@
             <ng-calendar min-date="min" max-date="max"></ng-calendar>
         </div>
     </div>
+
+    <ng-date-picker ng-model="now" placeholder="'请选择日期'"></ng-date-picker>
     <div style="clear:both"></div>
 </section>
 
@@ -53,7 +55,7 @@
 
     <div ng-repeat="a in arr">
         <div ng-repeat="b in a" class="small-calendar-container">
-            <ng-calendar default-date="b"></ng-calendar>
+            <ng-calendar selected-date="b"></ng-calendar>
         </div>
     </div>
 
