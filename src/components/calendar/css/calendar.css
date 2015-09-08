@@ -72,28 +72,25 @@
     width: 42.857142857142855%;
 }
 
+.calendar .day span {
+    font-weight: 800;
+    border: 1px transparent solid;
+}
+
 .calendar .active a {
     background-color: #60a917;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
-}
-
-.calendar .active a {
     color: #ffffff;
 }
 
-.calendar div.date.disabled a {
+.calendar .disabled a {
     color: #999999;
     background-color: #eeeeee;
 }
 
-.calendar div.date.disabled a:hover {
+.calendar .disabled a:hover {
     color: #999999;
     background-color: #eeeeee;
-}
-
-.calendar .calendar-row .day a {
-    font-weight: 800;
-    border: 1px transparent solid;
 }
 
 .calendar .year,
