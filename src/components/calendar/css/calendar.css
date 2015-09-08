@@ -83,14 +83,11 @@
     color: #ffffff;
 }
 
-.calendar .disabled a {
-    color: #999999;
-    background-color: #eeeeee;
-}
-
+.calendar .disabled a,
 .calendar .disabled a:hover {
     color: #999999;
     background-color: #eeeeee;
+    cursor: not-allowed;
 }
 
 .calendar .year,
