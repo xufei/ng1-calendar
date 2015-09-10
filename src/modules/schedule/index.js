@@ -1,7 +1,5 @@
 "use strict";
 
-import angular from "angular";
-
 import ScheduleDirective from "./directives/schedule";
 
 import DirectiveFactory from "../../utils/directive";

@@ -1,7 +1,5 @@
 "use strict";
 
-import angular from "angular";
-
 import DatePickerDirective from "./directives/datepicker";
 
 import DirectiveFactory from "../../utils/directive";

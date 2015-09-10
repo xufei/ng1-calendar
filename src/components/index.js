@@ -1,7 +1,5 @@
 "use strict";
 
-import angular from "angular";
-
 import calendar from "./calendar/index";
 import datePicker from "./datepicker/index";
 

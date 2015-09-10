@@ -1,5 +1,3 @@
-import angular from "angular";
-
 import components from "./components/index";
 
 import demo from "./modules/demo/index";
