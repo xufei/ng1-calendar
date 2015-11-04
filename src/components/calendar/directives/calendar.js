@@ -2,7 +2,6 @@ import "../css/calendar.css";
 import template from "../templates/calendar.html";
 import {Calendar} from "../../../models/calendar/calendar";
 
-
 export default class CalendarDirective {
 	constructor() {
 		this.template = template;
@@ -94,7 +93,7 @@ export default class CalendarDirective {
 CalendarDirective.weekdays = ["日", "一", "二", "三", "四", "五", "六"];
 CalendarDirective.months = ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"];
 
-// 视图模式，一个三个，可以切换，默认是显示日期的
+// 视图模式，一个三个，可以切换，默认是显示日期的 
 CalendarDirective.ViewStates = Object.freeze({
 	DATE: 0,
 	MONTH: 1,
