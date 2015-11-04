@@ -8,7 +8,7 @@
                 <a href="javascript:void(0)">‹</a>
             </div>
             <div class="date-title" ng-click="viewMode=1">
-                <a href="javascript:void(0)">{{calendar.year + "年 " + calendar.months[calendar.month]}}</a>
+                <a href="javascript:void(0)">{{calendar.year + "年 " + monthArr[calendar.month]}}</a>
             </div>
             <div class="next" ng-click="calendar.nextMonth()">
                 <a href="javascript:void(0)">›</a>
@@ -51,7 +51,7 @@
                   ng-repeat="month in calendar.months"
                   ng-class="{'active':month==calendar.months[calendar.month]}"
                   ng-click="selectMonth($index)">
-                <a href="javascript:void(0)">{{month}}</a>
+                <a href="javascript:void(0)">{{monthArr[month]}}</a>
             </div>
         </div>
     </div>

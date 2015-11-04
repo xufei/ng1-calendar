@@ -1,6 +1,6 @@
 import "../css/schedule.css";
 import template from "../templates/schedule.html";
-import Calendar from "../../../models/calendar/calendar";
+import {Calendar} from "../../../models/calendar/calendar";
 
 export default class ScheduleDirective {
 	constructor() {

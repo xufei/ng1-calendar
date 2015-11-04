@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>ng1 calendar demo</title>
+    <script src="//cdn.bootcss.com/angular.js/1.4.5/angular.min.js"></script>
+    <base href="/">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .small-calendar-container {
+            width: 25%;
+            float: left;
+            padding: 5px;
+        }
+    </style>
+<link href="app.css" rel="stylesheet"></head>
+<body ng-app="app">
+
+
+<section ng-controller="CalendarController">
+    <h1>基本使用方式</h1>
+
+    <div>
+        <div class="small-calendar-container">
+            <h2>默认日历</h2>
+            <ng-calendar></ng-calendar>
+        </div>
+        <div class="small-calendar-container">
+            <h2>设置默认日期</h2>
+            <ng-calendar selected-date="now"></ng-calendar>
+        </div>
+        <div class="small-calendar-container">
+            <h2>设置最小日期</h2>
+            <ng-calendar min-date="min"></ng-calendar>
+        </div>
+        <div class="small-calendar-container">
+            <h2>同时设置最大最小日期</h2>
+            <ng-calendar min-date="min" max-date="max"></ng-calendar>
+        </div>
+    </div>
+
+    <ng-date-picker ng-model="now" placeholder="'请选择日期'"></ng-date-picker>
+    <div style="clear:both"></div>
+</section>
+
+<hr>
+
+<section ng-controller="CalendarController">
+    <h1>2015年日历</h1>
+
+    <div ng-repeat="a in arr">
+        <div ng-repeat="b in a" class="small-calendar-container">
+            <ng-calendar selected-date="b"></ng-calendar>
+        </div>
+    </div>
+
+    <div style="clear:both"></div>
+</section>
+
+<hr>
+
+<section>
+    <h1>扩展的日历，比较复杂的单元格</h1>
+
+    <ng-schedule></ng-schedule>
+</section>
+
+
+
+<script src="app.js"></script></body>
+</html>
