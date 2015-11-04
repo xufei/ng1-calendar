@@ -1,4 +1,13 @@
 <div class="calendar">
+    <header class="header">
+        <div class="weekday">星期{{weekdayArr[calendar.selectedDate.date.getDay()]}}</div>
+        <div>
+            <div class="month">{{monthArr[calendar.selectedDate.date.getMonth()]}}</div>
+            <div class="date">{{calendar.selectedDate.date.getDate()}}</div>
+        </div>
+        <div class="year">{{calendar.selectedDate.date.getFullYear()}}</div>
+    </header>
+        
     <div class="date-view" ng-show="viewMode==0">
         <div class="calendar-row calendar-header">
             <div class="prev" ng-click="calendar.previousYear()">
@@ -19,16 +28,16 @@
         </div>
 
         <div class="calendar-row">
-            <div class="day" ng-repeat="day in calendar.weekdays">
+            <div class="day" ng-repeat="day in weekdayArr">
                 <span>{{day}}</span>
             </div>
         </div>
 
         <div class="calendar-row" ng-repeat="row in calendar.days">
             <div class="date" ng-repeat="day in row track by $index"
-                 ng-class="{'disabled':!dateInRange(day),'active':!(day-calendar.selectedDate)}"
-                 ng-click="selectDate(day)">
-                <a href="javascript:void(0)" ng-if="day">{{day.date.getDate()}}</a>
+                 ng-class="{'disabled':!dateInRange(day),'active':!(day-calendar.selectedDate)}">
+                <a href="javascript:void(0)" ng-if="day"
+                 ng-click="selectDate(day)">{{day.date.getDate()}}</a>
                 <span ng-if="!day"></span>
             </div>
         </div>

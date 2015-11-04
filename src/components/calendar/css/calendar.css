@@ -1,10 +1,45 @@
 .calendar {
-    min-width: 13.75rem;
     border: 1px #eeeeee solid;
-    font-size: 0.75rem;
-    padding: .3125rem;
     background-color: #ffffff;
-    font-family: "Tahoma";
+    font-family: Roboto,sans-serif;
+    width: 22rem;
+}
+
+.calendar .header {
+    padding-bottom: 1rem;
+    color: #fff;
+    text-align: center;
+    background-color: #3f51b5;
+}
+
+.calendar .header .weekday {
+    width: 100%;
+    font-size: 1.4rem;
+    line-height: 2rem;
+    background-color: #303f9f;
+}
+
+.calendar .header .month {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.calendar .header .date {
+    width: 100%;
+    font-size: 5rem;
+    line-height: 4rem;
+    cursor: pointer;
+}
+
+.calendar .header .year {
+    display: inline-block;
+    margin-top: 1rem;
+    font-size: 1.8rem;
+    cursor: pointer;
+    opacity: 0.6;
 }
 
 .calendar a,
@@ -12,7 +47,6 @@
     display: block;
     text-align: center;
     text-decoration: none;
-    padding: .3125rem 0;
     color: #2086bf;
 }
 
@@ -38,38 +72,31 @@
     float: left;
 }
 
-.calendar .calendar-row a {
-    border: 1px #bcd9e2 solid;
-    margin: 0.1em;
+.calendar .calendar-row a,
+.calendar .calendar-row span {
+    width: 3rem;
+    height: 3rem;
+    line-height: 3rem;
+    border-radius: 50%;
+    color: #757575;
+    text-align: center;
 }
 
 .calendar .calendar-header a,
 .calendar .calendar-header span {
-    color: #ffffff;
-    background-color: #59cde2;
-    padding: 1rem 0;
-    border: 1px transparent solid;
+    opacity: .7;
+    border-radius: 0;
+    font-weight: 500;
 }
 
-.calendar .calendar-header {
-    background-color: #59cde2;
-    color: #ffffff;
+.calendar .month-title a,
+.calendar .year-title a,
+.calendar .year-title span {
+    width: 14rem;
 }
 
-.calendar .prev,
-.calendar .next,
-.calendar .date,
-.calendar .day {
-    width: 14.285714285714285%;
-}
-
-.calendar .month-title,
-.calendar .year-title {
-    width: 71.42857142857143%;
-}
-
-.calendar .date-title {
-    width: 42.857142857142855%;
+.calendar .date-title a {
+    width: 9rem;
 }
 
 .calendar .day span {
@@ -90,12 +117,7 @@
     cursor: not-allowed;
 }
 
-.calendar .year,
-.calendar .month {
-    width: 25%;
-}
-
 .calendar .year a,
 .calendar .month a {
-    padding: 1.3125rem 0;
+    width: 10rem;
 }
