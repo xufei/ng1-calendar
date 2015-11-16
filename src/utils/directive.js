@@ -18,10 +18,12 @@ export default class DirectiveFactory {
 
 			if (instance.controller) {
 				let controllerOrg = instance.controller;
+				/*
 				instance.controller = function (...controllerArgs) {
 					let instance = new Directive(...args);
 					controllerOrg.apply(instance, controllerArgs);
-				};
+					console.log(instance);
+				};*/
 
 				instance.controller.$inject = controllerOrg.$inject || ["$scope", "$element"];
 			}

@@ -6,6 +6,8 @@ export default class CalendarDirective {
 	constructor() {
 		this.template = template;
 		this.restrict = "E";
+		this.controller = CalendarCtrl;
+		this.controllerAs = "calendarCtrl";
 
 		this.scope = {
 			minDate: "=",
@@ -14,88 +16,80 @@ export default class CalendarDirective {
 			dateClick: "&"
 		};
 	}
-
-	link(scope) {
-		this.$scope = scope;
-	}
-
-	controller($scope) {
-		let calendar = new Calendar();
-		$scope.calendar = calendar;
-
-		$scope.monthArr = CalendarDirective.months;
-		$scope.weekdayArr = CalendarDirective.weekdays;
-
-		$scope.now = new Date();
-
-		$scope.$watch("selectedDate", function(newDate) {
-			if (newDate) {
-				calendar.year = newDate.getFullYear();
-				calendar.month = newDate.getMonth();
-				calendar.date = newDate.getDate();
-			}
-		});
-
-		$scope.viewMode = CalendarDirective.ViewStates.DATE;
-
-		$scope.dateInRange = function(day) {
-			if (!day) {
-				return true;
-			}
-
-			if ($scope.minDate) {
-				if (day.date - $scope.minDate < 0) {
-					return false;
-				}
-			}
-			if ($scope.maxDate) {
-				if (day.date - $scope.maxDate > 0) {
-					return false;
-				}
-			}
-			return true;
-		};
-
-		$scope.selectDate = function (day) {
-			if ($scope.dateInRange(day)) {
-				calendar.date = day.date.getDate();
-
-				$scope.selectedDate = new Date(calendar.year, calendar.month, calendar.date);
-
-				if ($scope.dateClick) {
-					$scope.dateClick(calendar.selectedDate);
-				}
-			}
-		};
-
-		$scope.selectMonth = function (month) {
-			calendar.month = month;
-			$scope.viewMode = CalendarDirective.ViewStates.DATE;
-
-			$scope.selectedDate = new Date(calendar.year, calendar.month, calendar.date);
-		};
-
-		$scope.selectYear = function (year) {
-			calendar.year = year;
-			$scope.viewMode = CalendarDirective.ViewStates.DATE;
-
-			$scope.selectedDate = new Date(calendar.year, calendar.month, calendar.date);
-		};
-
-		$scope.selectNow = function() {
-			$scope.now = new Date();
-
-			calendar.currentDate = $scope.now;
-		};
-	}
 }
 
-CalendarDirective.weekdays = ["日", "一", "二", "三", "四", "五", "六"];
-CalendarDirective.months = ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"];
+class CalendarCtrl {
+	constructor() {
+		this.calendar = new Calendar();
 
-// 视图模式，一个三个，可以切换，默认是显示日期的 
-CalendarDirective.ViewStates = Object.freeze({
-	DATE: 0,
-	MONTH: 1,
-	YEAR: 2
-});
+		this.monthArr = ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"];
+		this.weekdayArr = ["日", "一", "二", "三", "四", "五", "六"];
+		
+		// 视图模式，一个三个，可以切换，默认是显示日期的 
+		this.ViewStates = Object.freeze({
+			DATE: 0,
+			MONTH: 1,
+			YEAR: 2
+		});
+
+		this.now = new Date();
+
+		this.viewMode = this.ViewStates.DATE;
+	}
+
+	set selectedDate(newDate) {
+		if (newDate) {
+			this.calendar.year = newDate.getFullYear();
+			this.calendar.month = newDate.getMonth();
+			this.calendar.date = newDate.getDate();
+		}
+	}
+
+	dateInRange(day) {
+		if (!day) {
+			return true;
+		}
+
+		if (this.minDate) {
+			if (day.date - this.minDate < 0) {
+				return false;
+			}
+		}
+		if (this.maxDate) {
+			if (day.date - this.maxDate > 0) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	selectDate(day) {
+		if (this.dateInRange(day)) {
+			this.calendar.date = day.date.getDate();
+
+			this.selectedDate = new Date(this.calendar.year, this.calendar.month, this.calendar.date);
+
+			if (this.dateClick) {
+				this.dateClick(this.calendar.selectedDate);
+			}
+		}
+	}
+
+	selectMonth(month) {
+		this.calendar.month = month;
+		this.viewMode = this.ViewStates.DATE;
+
+		this.selectedDate = new Date(this.calendar.year, this.calendar.month, this.calendar.date);
+	}
+
+	selectYear(year) {
+		this.calendar.year = year;
+		this.viewMode = this.ViewStates.DATE;
+
+		this.selectedDate = new Date(this.calendar.year, this.calendar.month, this.calendar.date);
+	}
+
+	selectNow() {
+		this.calendar.currentDate = this.now = new Date();
+	}
+}
